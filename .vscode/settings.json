@@ -1,9 +1,7 @@
 {
   "editor.formatOnSave": true,
-  "files.exclude": {
-    "node_modules": true,
-    "yarn.lock": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "spellright.ignoreFiles": ["*"]
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
