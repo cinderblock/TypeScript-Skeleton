@@ -2,23 +2,41 @@
   "name": "library",
   "version": "0.0.0",
   "description": "Library for ...",
-  "main": "src/index.ts",
-  "types": "dist/index.d.ts",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map",
+    "!dist/**/*.test.js",
+    "!dist/**/*.test.js.map",
+    "!dist/**/*.test.d.ts",
+    "!dist/**/*.test.d.ts.map"
+  ],
   "author": "Cameron Tacklind <cameron@tacklind.com> (https://cameron.tacklind.com)",
   "license": "MIT",
+  "engines": {
+    "bun": ">=1.2"
+  },
   "scripts": {
-    "dev": "tsx --watch ."
+    "dev": "bun --watch run src/index.ts",
+    "build": "tsc",
+    "test": "bun test src",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write .",
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "@types/eslint-config-prettier": "^6.11.3",
-    "@types/node": "^22.13.1",
-    "eslint": "^9.20.0",
-    "eslint-config-prettier": "^10.0.1",
+    "@types/bun": "^1.2.0",
     "prettier": "^3.5.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.0"
+    "typescript": "^6.0.3"
   }
 }
